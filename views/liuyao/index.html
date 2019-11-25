@@ -1,0 +1,126 @@
+{{template "common/column.html" .}}
+<div class="layui-container fly-marginTop">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>
+            六爻装卦
+        </legend>
+    </fieldset>
+    <div class="layui-row">
+        <div class="layui-col-lg12 layui-col-xs12">
+            <form class="layui-form" method="post" action="/liuyao/format">
+                <div class="layui-form-item">
+                    <div class="layui-input">
+                        <input type="text" required lay-verify="required" name="title"
+                               placeholder="请输入求测事情" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input">
+                        <input type="radio" name="sex" value="1" title="男" >
+                        <input type="radio" name="sex" value="2" title="女" >
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input">
+                        <input type="text" class="layui-input" name="start_time" id="start_time" required lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input">
+                        <select name="yao6" lay-verify="">
+                            <option value="">第六爻</option>
+                            <option value="1">少阳 (一背两字)</option>
+                            <option value="2">少阴 (一字两背)</option>
+                            <option value="3">老阳 (三背)</option>
+                            <option value="4">老阴 (三字)</option>
+                        </select>
+                    </div>
+                    <div class="layui-input">
+                        <select name="yao5" lay-verify="">
+                            <option value="">第五爻</option>
+                            <option value="1">少阳(一背两字)</option>
+                            <option value="2">少阴(一字两背)</option>
+                            <option value="3">老阳(三背)</option>
+                            <option value="4">老阴(三字)</option>
+                        </select>
+                    </div>
+                    <div class="layui-input" >
+                        <select name="yao4" lay-verify="">
+                            <option value="">第四爻</option>
+                            <option value="1">少阳(一背两字)</option>
+                            <option value="2">少阴(一字两背)</option>
+                            <option value="3">老阳(三背)</option>
+                            <option value="4">老阴(三字)</option>
+                        </select>
+                    </div>
+                    <div class="layui-input">
+                        <select name="yao3" lay-verify="">
+                            <option value="">第三爻</option>
+                            <option value="1">少阳(一背两字)</option>
+                            <option value="2">少阴(一字两背)</option>
+                            <option value="3">老阳(三背)</option>
+                            <option value="4">老阴(三字)</option>
+                        </select>
+                    </div>
+                    <div class="layui-input">
+                        <select name="yao2" lay-verify="">
+                            <option value="">第二爻</option>
+                            <option value="1">少阳(一背两字)</option>
+                            <option value="2">少阴(一字两背)</option>
+                            <option value="3">老阳(三背)</option>
+                            <option value="4">老阴(三字)</option>
+                        </select>
+                    </div>
+                    <div class="layui-input">
+                        <select name="yao1" lay-verify="">
+                            <option value="">第一爻</option>
+                            <option value="1">少阳(一背两字)</option>
+                            <option value="2">少阴(一字两背)</option>
+                            <option value="3">老阳(三背)</option>
+                            <option value="4">老阴(三字)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-textarea">
+                        <textarea name="" placeholder="请输入" class="layui-textarea">古钱币字为阴，满文为阳</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    layui.cache.page = 'jie';
+    layui.config({
+        version: "3.0.0"
+        ,base: '/static/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        form.on('submit(formDemo)', function(data){
+            $("#liuyaoPost").submit()
+            return false;
+        });
+    });
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start_time',
+            value: new Date()
+        });
+    });
+</script>

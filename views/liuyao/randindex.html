@@ -1,0 +1,60 @@
+{{template "common/column.html" .}}
+<div class="layui-container fly-marginTop">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>
+            六爻在线起卦
+        </legend>
+    </fieldset>
+    <div class="layui-row">
+        <div class="layui-col-lg12 layui-col-xs12">
+            <form class="layui-form" method="post" id="liuyaoPost" action="/liuyao/rand_format">
+                <div class="layui-form-item">
+                    <div class="layui-input">
+                        <input type="text" required lay-verify="required" name="title"
+                               placeholder="请输入求测事情" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input">
+                        <input type="radio" name="sex" value="1" title="男" >
+                        <input type="radio" name="sex" value="2" title="女" >
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-textarea">
+                        <textarea name="" placeholder="请输入" class="layui-textarea">古钱币字为阴，满文为阳</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn"  lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            $("#liuyaoPost").submit()
+            return false;
+        });
+    });
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start_time',
+            value: new Date()
+        });
+    });
+</script>

@@ -1,0 +1,103 @@
+{{template "common/column.html" .}}
+<div class="layui-container fly-marginTop">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>
+                    六爻在线起卦
+                </legend>
+            </fieldset>
+    <style>
+        .guo div{
+            line-height: 30px;
+        }
+    </style>
+            <div class="layui-row">
+                <div class="layui-card" style="border: solid 1px #01AAED">
+                    <div class="layui-card-header" style="display:block;height: auto;margin-left: 15px;">
+                        <h3 style="margin: 3px 3px;">{{.data.title}}</h3>
+                    </div>
+                    <hr class="layui-bg-orange"></hr>
+                    <div style="display: block;margin-left: 15px; ">
+                        <h4>性别：{{.data.sex}} 日期：{{.data.start_time}} 起卦方式：电脑自动</h4></div>
+                    <hr class="layui-bg-black"></hr>
+                    <div style="display: block;margin-left: 15px; ">
+                        <h4>
+                            干支：
+                                {{.data.lunar.hyear}}&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{.data.lunar.cyclicalMonth}}&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{.data.lunar.cyclicalDay}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="layui-bg-red">(日空：{{.data.kongwang}})</label>
+                        </h4>
+                    </div>
+                    <hr class="layui-bg-orange"></hr>
+                    <div style="display: block;margin-left: 15px; ">
+                        <h4>
+                            神煞：
+                            {{.data.shensha}}
+                        </h4>
+                    </div>
+                    <hr class="layui-bg-red"></hr>
+                    <div class="" style="font-size: 14px;height: 350px;">
+                        <div class="guo" style="display: block;float: left;margin-right: 2px;margin-left: 8px;">
+                            <h4 style="font-style:oblique;margin-bottom: 8px;">六神</h4>
+                            <div>{{.data.liushen6}}</div>
+                            <div>{{.data.liushen5}}</div>
+                            <div>{{.data.liushen4}}</div>
+                            <div>{{.data.liushen3}}</div>
+                            <div>{{.data.liushen2}}</div>
+                            <div>{{.data.liushen1}}</div>
+                        </div>
+                        <div class="guo" style="display: block;float: left;margin-right: 2px;margin-left: 2px;">
+                            <h4 style="font-style:oblique;margin-bottom: 8px;">伏神</h4>
+                            <div>{{.data.fushen6}}&nbsp;</div>
+                            <div>{{.data.fushen5}}&nbsp;</div>
+                            <div>{{.data.fushen4}}&nbsp;</div>
+                            <div>{{.data.fushen3}}&nbsp;</div>
+                            <div>{{.data.fushen2}}&nbsp;</div>
+                            <div>{{.data.fushen1}}&nbsp;</div>
+                        </div>
+                        <div class="guo" style="display: block;float: left;margin-right: 10px;">
+                            <h4 style="font-style:oblique;margin-bottom: 8px;">{{.data.gua_name}}</h4>
+                            <div>{{.data.yao6}}</div>
+                            <div>{{.data.yao5}}</div>
+                            <div>{{.data.yao4}}</div>
+                            <div>{{.data.yao3}}</div>
+                            <div>{{.data.yao2}}</div>
+                            <div>{{.data.yao1}}</div>
+                        </div>
+                        <div class="guo" style="float: left;">
+                            <h4 style="font-style:oblique;margin-bottom: 8px;">{{.data.gua_bian_name}}</h4>
+                            <div>{{.data.bian6}}</div>
+                            <div>{{.data.bian5}}</div>
+                            <div>{{.data.bian4}}</div>
+                            <div>{{.data.bian3}}</div>
+                            <div>{{.data.bian2}}</div>
+                            <div>{{.data.bian1}}</div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+</div>
+
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+
+            return false;
+        });
+    });
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start_time',
+            value: new Date()
+        });
+    });
+</script>
