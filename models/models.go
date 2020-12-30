@@ -131,7 +131,7 @@ type SignIn struct {
 //日历库
 type LunarCalendar struct {
 	Model
-	Day        string `gorm:"size:10;unique" `
+	Day        string `gorm:"size:10;UNIQUE_INDEX" `
 	LunarYear  string `gorm:"size:5;"`
 	LunarMonth string `gorm:"size:5;"`
 	LunarDay   string `gorm:"size:5;"`
